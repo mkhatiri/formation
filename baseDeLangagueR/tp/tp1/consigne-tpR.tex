@@ -1,0 +1,398 @@
+\documentclass[12pt,twoside,openright]{article}
+
+%
+% Pour les documents rédiges en Français
+%
+\usepackage{ucs}
+\usepackage[utf8]{inputenc}
+
+% Utilisation des commandes d'indentation
+%
+\usepackage{indentfirst}
+
+%
+% Style de Page
+% --------------------
+%
+\pagestyle{headings}
+
+%\setlength{textheight}{8.0in}
+
+% Pour rentrer des sources d'algorithmes
+\usepackage{minted}
+
+% Graphics
+% -------------
+\usepackage[dvips]{graphicx}
+
+% Ajout de commentaires
+%
+\usepackage{comment}
+
+% Bibliographie
+% -------------------
+%  \bibliographiestyle{}
+
+% Titre, auteur et date
+% ---------------------------
+\title{\'Ecole chercheurs ASPEN 2013 \\
+\vspace{0.3cm}
+   TP  Introduction à R \\ \vspace{0.2cm}
+   Bases du langage - Traitements statistiques}
+   
+\date{8 Avril 2013}
+
+% Pied de page
+% -------------------
+\usepackage{fancyheadings}
+%\pagestyle{fancy}
+
+% Debut du document
+%
+\begin{document}
+\maketitle
+{\it{\bf Préliminaires}: se placer dans le répertoire IntroR/TP}\\
+
+\section{Session de travail}
+\subsection{Utilisation de Rstudio}
+Il s'agit de se familiariser avec l'interface \emph{RStudio} et les facilités qu'elle apporte pour l'utilisateur et le développeur.\\
+
+\begin{enumerate}
+\item Configurer le panneau d'affichage pour faire apparaître sur les différentes fenêtres les informations pertinentes. \\
+
+\begin{itemize}
+\item Aller dans le menu  {\bf Preferences} de {\bf RStudio}  puis {\bf Panel Layout}
+\item Définissez les affichages associés aux quatre fenêtres de RStudio.
+\end{itemize}
+
+\item Les outils très utiles sont:
+	\begin{itemize}
+	\item l'éditeur: écrire un script, sauvegarder, sources, …
+	\item workspace: affiche les objets utilisés en cours de session,
+	\item plot: gestion des sorties graphiques,
+	\item history: historique des commandes,
+	\item file: gestion des fichiers et des répertoires,
+	\item package: gestion des packages utiles en cours de session.
+	\item help: affichage des help, accès aux tutoriaux,…
+	\end{itemize}
+\end{enumerate}
+
+
+\subsection{ Aide sous R}
+\begin{itemize}
+\item Utiliser le menu help de RStudio
+\item Accès aux tutoriaux par commande: help.start() 
+\item Aide sur une fonction: help(plot) ou ?plot
+\item RSiteSearch("calcul de moyenne"): recherche sur internet dans la liste des archives des utilisateurs.
+\end{itemize}
+
+
+\subsection{Sauvegarde de l'espace de travail}
+
+Quand vous quittez R (RStudio), il vous est posé la question:\\
+
+ \emph{Save workspace image ?"} \\
+ 
+Répondez \emph{OUI}? L'ensemble des objects contenu dans l'espace de travail sera sauvegardé dans le fichier ".Rdata" par défaut. \\
+
+Lorsque vous redémarrez R, vous avez le message:\\
+
+ \emph{[Previously saved workspace restored]}\\
+
+Pour nettoyez l'espace de travail: {\bf rm(list=ls())}
+
+\subsection{Utilisation d'un package}
+
+On utilisera un certain nombre de package pendant les TPs, il sera nécessaire de les charger dans votre session.\\
+
+\begin{itemize}
+\item Charger le package \emph{sensitivity}
+\item Consulter le contenu de ce package (liste des fonctions,…)
+\item Demander l'aide sur une des fonctions du package
+\end{itemize}
+
+\begin{minted}{r}
+# Utilisation de package
+# Menu "Package" RStudio
+library(sensitivity)
+
+# Contenu du package
+library(help=sensitivity)
+
+# Aide sur une fonction du package charge
+help(sobol)
+
+
+\end{minted}
+
+\subsection{ Exécution d'un script}
+
+Charger dans l'éditeur la fontion prodVect.R stockée dans le répertoire du TP, observez les paramètres en entrée et en sortie. \\
+
+Une  fonction est un objet R, pour l'utiliser elle devra être présente dans votre "workspace", utilisez la commande \emph{source} ou le menu "Source on save" de Rstudio . \'Ecrire un script qui fera appel à la fonction  \emph{vectProd} et exécuter le.
+
+\begin{minted}{r}
+
+# Appel de la fonction
+#
+v1=c(1:10)
+w1 <- v1*v1
+
+source("prodVect.R")
+xx <- prodVect(v1,w1)
+
+\end{minted}
+
+\section{Manipulation des objects R}
+\subsection{R comme machine à calculer}
+On peut :
+\begin{itemize}
+\item Faire toutes les opérations que l'on veut grâce aux opérateurs +,-,*,/,\textasciicircum
+
+\item Principales fonctions mathématiques.
+\begin{itemize}
+\item log()/log10() Logarithme népérien/décimal
+\item exp() Exponentielle.
+\item cos()/sin()/tan() Cosinus/Sinus/Tangente.
+\item abs() Valeur absolue.
+\item sqrt() Racine carrée.
+\end{itemize}
+\end{itemize}
+%
+On peut manipuler des variables (scalaires, vesteurs, matrices,..)
+\begin{minted}{r}
+a <- 2
+b <- a
+a*b+4
+log(a)
+
+\end{minted}
+%
+\subsection{Vecteur, matrice, tableau}
+\subsubsection{Créer un vecteur}
+Créer les vecteurs  y1, y2, y3 et y4, avec $d = 4$ et $e = 12$ :
+
+\begin{itemize}
+\item y1 : une suite d'indices de 1 à 12.
+\item y2 : trois fois l'élément $d$, puis trois fois d au carré, puis trois fois la racine de d.
+\item y3 : la séquence de 1 à 20 avec un pas de deux.
+\item y4 : 10 chiffres compris entre 1 et 30 avec un intervalle constant.
+\end{itemize}
+%
+\begin{minted}{r}
+
+#
+d<-4
+e=12
+y1 <- 1:12
+y2 <-rep(c(d,d^2,sqrt(d)),c(3,3,3))
+y3 <- seq(1,20,2)
+y4 <- seq(1,30,length=10)
+\end{minted}
+%
+\subsubsection{Créer des matrices}
+Construisez les matrices $Z_1$, $Z_2$, $Z_3$ à partir de $y_1$
+
+$$ Z_1=\left[\begin{array}{cccc}1 & 2 & 3& 4\\5 & 6 & 7 & 8\\9 & 10 & 11 & 12\end{array}\right] \quad \mbox{;} \quad Z_2=\left[\begin{array}{cccc}1 & 2 & 3& 4\\5 & 6 & 7 & 8\\9 & 10 & 11 & 12\\
+1 & 2 & 3& 4\\5 & 6 & 7 & 8\\9 & 10 & 11 & 12\end{array}\right]
+\quad \mbox{;} \quad 
+Z_3=\left[\begin{array}{cccccccc}1 & 2 & 3& 4 &1 & 2 & 3& 4\\5 & 6 & 7 & 8 &5 & 6 & 7 & 8\\9 & 10 & 11 & 12 & 9 & 10 & 11 & 12
+\end{array}\right]
+$$
+Puis afficher:
+\begin{itemize}
+\item L'élément de $Z_1$ contenu dans la première ligne et la troisième colonne.
+\item La première ligne de $Z_1$.
+%\item La sous-matrice après avoir enlevé la première ligne et la première colonne de $Z_1$.
+\end{itemize}
+
+Soit:
+$$
+W=\left[\begin{array}{ccc}1 & 2 & 3\\4 & 5 & 6 \\7 & 8 & 9 \\
+10 & 11 & 12\end{array}\right] \quad \mbox{et le vecteur} \quad V=\left[\begin{array}{c}1 \\5  \\9  \end{array}\right]
+$$
+\begin{itemize} 
+\item Effectuer le produit matriciel $Z_1*W$
+\item Exécuter les commande $Z_1*W$,   $Z_1+W$ et observez le résultat.
+\item Exécutez les commandes $Z_1*V$ et $Z_1\%*\%V$ et observez les résultats.
+\end{itemize}
+\subsection{Les listes et les fonctions}
+\'Ecrire une fonction qui prend deux vecteurs de même taille en entrées et fournit la somme et le produit terme à terme de ces deux vecteurs. On utilesera un objet de type \emph{list} pour les sorties. \\
+
+Testez sur deux vecteurs et observez les résulats.
+%
+\begin{minted}{r}
+# Fonction et liste
+prodsom <- function(V1,V2)
+{Vprod <- V1*V2
+ Vsomme <- V1 + V2
+ res <- list(prod=Vprod,somme=Vsomme)
+ return(res)
+}
+
+\end{minted}
+%
+\section {Manipuler les données}
+%
+\subsection{Fichiers de données (data.frame)}
+Lire le fichier texte "poidsTaille.txt" stocké dans le répertoire du TP R, ce fichier est un fichier texte contenant les données d'un étude du CHU de Toulouse, concernant le poids, la taille, le sexe d'enfants de 4 à 7ans. Ce fichier contient sur sa première ligne le nom des variables observées.
+	\begin{itemize}
+	\item Quel est la classe de la variable ainsi crée? Quelle est la taille de l'échantillon? Quel le mode et la classe des variables contenu dans cet échantillon.
+	\item Calculer les statistiques de base à l'aide de la fonction \emph{summary}
+	\item Calculer séparément la moyenne, la médiane, l’étendue et les quantiles pour les variables \emph{Poids} et \emph{Taille} à l’aide de commandes appropriées.
+	\item Calculer la variance (fonction \emph{var}) des  variables \emph{Poids} et \emph{Taille}, la variance calculée et la variance avec biais. \'Ecrire une fonction qui calcule la variance sans biais et l'écart-type.
+	\item Tracer un histogramme en $n$ classes de ces deux variables, on fera varier n.
+	\item Extraire :
+		\begin{itemize}
+		\item la deuxième ligne
+		\item la troisième colonne
+		\item les lignes 1, 2 et 4 avec une seule commande c()
+		\item les lignes 3 à 6 avec la commande :
+		\item tout sauf les colonnes 1 et 2.
+		\item toutes les lignes ayant une AGE supérieure à 70mois
+		\end{itemize}
+		\end{itemize}
+% Reperer les individus manquants
+\subsection{Reperer les individus manquants}
+Les données manquantes sont représentées sous R par {\ NA} (Not Available). Pour les retrouver, on utilise la fondtion {\bf is.na} qui renvoie {\bf TRUE} si la valeur vaut NA et {\bf False} sinon. \\
+
+Construire une variable mesurée sur 15 individus en effectuant un tirage selon une loi normale $ \mathcal N(0,1)$, on affecte des données manquantes pour les individus 7,8,14, il s'agit de:
+\begin{itemize}
+\item repérer les individus qui ont des données manquantes,
+\item éliminer les individus  qui ont des données manquantes.
+\end{itemize}
+%
+\begin{minted}{r}
+# Echantillon
+set.seed(23)
+var <- rnorm(15,mean=0,sd=1)
+var[c(7,8,14)] <- NA
+#
+# Identifier les donnees manquantes
+select <- is.na(var)
+which(select)
+# Eliminer les individus ayant une donnee manquante
+var2 <- var[!select]
+\end{minted}
+
+\section{Distribution et représentations graphiques}
+$X_1,X_2,\ldots X_p$: p variables indépendantes qui suivent une loi normale. $X_1^2 + X_2^2\ldots X_p^2$ suit une loi du $\chi^2$ à $p$ degrés de liberté.
+
+\begin{itemize}
+\item  Écrire une fonction \emph{normchi} qui calcul la somme des carrés d’une variable normale. Utiliser
+p= 10
+\item Générer à l’aide de la fonction \emph{normchi}, une table de 1000 répétitions comme suit :\\
+
+{\bf tapply(1 :1000,as.factor(1 :1000),normchi)}
+
+\item Tracer un histogramme de 20 classes et superposer dessus la loi du $\chi^2$ théorique.
+\item Tracer, sur le même graphique, des densités pour différentes degrés de liberté : 3, 5, 10, 15 et 20.
+\end{itemize}
+
+\begin{minted}{r}
+Distribution
+# -------------
+
+normchi<-function(x) {sum((rnorm(10))^2)}
+tt<-tapply(1:1000,as.factor(1:1000),normchi)
+#
+hist(tt,proba=T,nclass=20,main='Somme de va normales = chi-deux',xlab='somme')
+x0<-seq(0,30,length=100)
+lines(x0,dchisq(x0, df=10),col=4)
+
+#
+y1<-dchisq(x0,3)
+y2<-dchisq(x0,5)
+y3<-dchisq(x0,10)
+y4<-dchisq(x0,15)
+y5<-dchisq(x0,20)
+#
+X11()
+plot(x0,y1,type="n",xlab="x",ylab="Chi-2 densite")
+lines(x0,y1,lty=1)
+lines(x0,y2,lty=2)
+lines(x0,y3,lty=3)
+lines(x0,y4,lty=4)
+lines(x0,y5,lty=5)
+lego<-c("Chi-deux(3)","Chi-deux(5)","Chi-deux(10)","Chi-deux(15)","Chi-deux(20)")
+legend(18,0.23,lego,lty=1:5)
+\end{minted}
+
+
+
+\section{Quelques méthodes statistiques}
+On reprend le fichier de données "poidsTaille.txt".
+
+\subsection{Ajustement de loi}
+On s'intéresse à la variable {\bf POIDS}
+\begin{enumerate}
+\item Visualiser l’histogramme, le boxplot et la fonction de répartition empirique de X1 (avec \emph{ hist}, \emph{boxplot} et  \emph{plot(ecdf())})
+\item Tester plusieurs types de lois (loi lognormale lnorm et loi normale norm par exemple)
+\begin{itemize}
+\item Estimer les paramètres de ces lois par maximum vraisemblance (avec \emph{fitdistr} de la librairie{\bf MASS})\\
+On rappelle que l’on peut utiliser la fonction \emph{names} pour savoir quelles quantités sont attachéesà un objet et pour extraire ces quantités, on peut utiliser \$.
+\item Regarder graphiquement l’ajustement en superposant les densités de probabilités testées surl’histogramme (ou les fonctions de répartition sur la fonction de répartition empirique)
+\end{itemize}
+%\subsection{Régression linéaire}
+%
+\begin{minted}{r}
+
+# ----------Ajustement de la loi
+
+x11()
+hist(POIDS,pr=T,col="lightblue",border="white",main="Histogramme de POIDS",cex.main=1.2)
+lines(density(X1),col="blue",lwd=2)
+
+# ----------------------- Estimation
+# Loi normale
+fit_N <- fitdistr(POIDS,"normal")
+names(fit_N)
+param_N <- fit_N$estimate
+
+# --------------------- Ajustement graphique
+x11()
+hist(POIDS,pr=T,col="lightblue",border="white",ylim=c(0,0.45),main="Histogramme de POIDS",cex.main=1.2)
+lines(seq(0,10,le=100),dlnorm(seq(0,10,le=100),param_LN[1],param_LN[2]),lwd=2,col="blue")
+lines(seq(0,10,le=100),dnorm(seq(0,10,le=100),param_N[1],param_N[2]),lwd=2,col="red")
+legend("topright",col=c("blue","red"),lty=c(1,1),lwd=c(2,2),c("loi lognormale","loi normale"))
+
+\end{minted}
+%
+\subsection{Régression linéaire simple}
+On se propose ici d’estimer par la méthode des moindres carrés les coefficients de régression linéaireentre les variables \emph{POIDS} et \emph{TAILLE} . \\
+
+$$POIDS = aTAILLE + b +\epsilon$$.
+\begin{enumerate}
+\item Visuliser le graphe (TAILLE,POIDS)
+\item Procéder à la régression linéaire (avec lm)
+\item Utiliser les commandes \emph{summary} et \emph{plot} sur les résultats de la regression linéaires.
+\end{enumerate}
+
+
+\begin{minted}{r}
+# ------------------ Regression lineaire
+# Lecture des donnees
+don <-read.table("poidsTaille.txt",header=TRUE)[,2:5]
+
+POIDS <- as.numeric(don$POIDS)
+TAILLE <- as.numeric(don$TAILLE)
+
+formule1 <- POIDS ~ TAILLE
+fit1 <- lm(formule1)
+summary(fit1)
+x11()
+par(mfrow = c(2, 2))
+plot(fit1)
+
+x11()
+plot(TAILLE,POIDS)
+points(TAILLE,predict(fit1),col="blue")
+abline(0,1)
+
+\end{minted}
+
+\end{enumerate}
+
+%\subsection{Analyse de variance}
+
+\end{document}

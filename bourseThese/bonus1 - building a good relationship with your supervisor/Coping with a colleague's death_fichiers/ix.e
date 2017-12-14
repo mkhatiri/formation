@@ -1,0 +1,21 @@
+var bs_siteid="8026264";var bs_adid="7500885";var bs_server="s0b.bluestreak.com";var bs_width="160";var bs_height="600";var bs_wmode="opaque";var bs_mediabase="http://ak.bluestreak.com//adv/monsanto/^16465/^7500885/";var bs_mainswf="MONSA6113_Banner_V1.swf";var bs_click_redirect_encode="http%3A%2F%2Foascentral%2Esciencemag%2Eorg%2FRealMedia%2Fads%2Fclick%5Flx%2Eads%2Fsciencecareers%2Esciencemag%2Eorg%2Fcareer%5Fmagazine%2Fprevious%5Fissues%2Farticles%2F2009%5F12%5F11%2Fcaredit%2Ea0900151%2FL45%2F1431661986%2FRight2%2FAAAS%2FCAR%2DMonsanto%2DROS%2DTwr%2D10%2E01%2E14%2FMonsantoBlueStreakTag%2Ehtml%2F556e7172646b743168364d4143676e6b%3F";var bs_content_cdn="http://ak.bluestreak.com/";var bs_url="http%3A%2F%2Fs0b%2Ebluestreak%2Ecom%2Fix%2Ee%3Ftr%26s%3D8026264%26a%3D7500885%26u%3Dhttp%3A%2F%2Fwww%2Emonsanto%2Ecom%2Fcareers%2Femerging%5Fleaders%5Fin%5Fscience%2Easp";var bs_protocol=bs_content_cdn.split(':')[0];var render_direct=0;function bs_write_flash(){document.write("<script type=\"text/javascript\" src=\""+bs_content_cdn+"/adv/conduit.js\"><\/script>");document.write("<script type=\"text/javascript\" src=\""+bs_content_cdn+"/adv/rmInteractionTrackingConduit.js\"><\/script>");document.write("<script type=\"text/javascript\">var tracking_object_registerer_"+bs_siteid+bs_adid+" = window.setInterval(function() {	if(typeof(RMInteractionTrackingConduit) != \"undefined\")	{		clearInterval(tracking_object_registerer_"+bs_siteid+bs_adid+");		tracking_object_"+bs_siteid+" = new RMInteractionTrackingConduit("+bs_siteid+","+bs_adid+",\"\");	}}, 100);<\/script>");document.write("<b><object id='BSFlashAd' class='BSFlashAd' classid='clsid:D27CDB6E-AE6D-11cf-96B8-444553540000' width='"+bs_width+"' height='"+bs_height+"' > \n<param name='wmode' value='"+bs_wmode+"'>\n<param name='base' value='"+bs_mediabase+"'>\n<PARAM NAME='allowScriptAccess' value='always'>\n<param name='movie' value='"+bs_mediabase+bs_mainswf+"'> \n <param name='FlashVars' value='siteid="+bs_siteid+"&adid="+bs_adid+"&tracking_object=tracking_object_"+bs_siteid+"&cltk="+bs_click_redirect_encode+"&xtrack=xxxtrackxx&mb="+bs_mediabase+"&cp="+bs_content_cdn+"/flashtracking/tracking_&url="+bs_click_redirect_encode+bs_url+"&clickTag="+bs_click_redirect_encode+bs_url+"'> \n<param name='quality' value='high'>  \n<embed class='BSFlashAd' wmode='"+bs_wmode+"' src='"+bs_mediabase+bs_mainswf+"' FlashVars='siteid="+bs_siteid+"&adid="+bs_adid+"&tracking_object=tracking_object_"+bs_siteid+"&cltk="+bs_click_redirect_encode+"&xtrack=xxxtrackxx&mb="+bs_mediabase+"&cp="+bs_content_cdn+"/flashtracking/tracking_&url="+bs_click_redirect_encode+bs_url+"&clickTag="+bs_click_redirect_encode+bs_url+"' quality='high' base='"+bs_mediabase+"' AllowScriptAccess='always' width='"+bs_width+"' height='"+bs_height+"' \n type='application/x-shockwave-flash'> \n</embed></object></b>");}try{if('fl'==(src.split('?')[1]).split('&')[0])render_direct=1}catch(e){}if(1==render_direct)bs_write_flash();
+	
+var ShockMode=0;
+var plugin=(navigator.mimeTypes&&navigator.mimeTypes["application/x-shockwave-flash"])?navigator.mimeTypes["application/x-shockwave-flash"].enabledPlugin:0;
+if (plugin&&parseInt(plugin.description.substring(plugin.description.indexOf(".")-2))>=6) {
+  ShockMode=1;
+} else if (navigator.userAgent&&navigator.userAgent.indexOf("MSIE")>=0&&(navigator.userAgent.indexOf("Windows 95")>=0||navigator.userAgent.indexOf("Windows 98")>=0||navigator.userAgent.indexOf("Windows NT")>=0)) {
+  document.write('<SCR' + 'IPT LANGUAGE=VBScript>');
+  document.writeln('  on error resume next ');
+  document.write('  ShockMode = (IsObject(CreateObject("ShockwaveFlash.ShockwaveFlash.6")))');
+  document.write('</SCR' + 'IPT>');
+}
+if (ShockMode) {
+  bs_write_flash();
+} else if (!(navigator.appName&& navigator.appName.indexOf("Netscape")>=0 &&navigator.appVersion.indexOf("2.")>=0)) {
+  var bs_image_server=('http'==bs_protocol)?'http://s0b.bluestreak.com':'https://s0.bluestreak.com';
+  document.write('<A HREF=http://'+bs_server+'/ix.e?hr&s='+bs_siteid);
+  document.write(' target=_blank><img ');
+  document.write('SRC='+bs_image_server+'/ix.e?ir&s='+bs_siteid);
+  document.write(' border=0></A>');
+}

@@ -1,0 +1,74 @@
+body {color: black !important;}
+
+.leaderboard,
+#sciencebar,
+#scbar ul,
+#navigation,
+#footer,
+.searchbar,
+.pagetools,
+.footerjobsearch,
+.rssbar,
+#bookmarks,
+#adrail,
+.articlefooter,
+.articleinfo, 
+#hd {width: 0 !important; display: none !important;}
+
+.maincolgutter h1 {font-size: 1em; margin-top: 1em; color: #ccc;}
+
+h1, h2, h3, h4, h5, h6 {font-family: Georgia, serif;}
+h1 {margin-top: 0;}
+
+#scbar a img {margin-bottom: 5px; display: block;}
+#scbar:after {content:"http://sciencecareers.sciencemag.org"; font-size: 1.4em; font-family: Georgia, serif;}
+
+#articlecol {border-top: 4px double #000; margin-top: 15px; padding-top: 15px;}
+
+.breadcrumbs {display: none;}
+
+div.articletextgutter h1 {}
+
+#articlesidebar {width: 180px; float: left; clear: left; overflow: auto;}
+#articlesidebar .gutter { padding: 0 10px 10px 10px; overflow-x: hidden;}
+#articlesidebar div.photo {width: 160px !important; background: white; padding-bottom: 5px; overflow: hidden;}
+
+#leadphoto {float: left; width: 160px;}
+img {border: none;}
+
+/*
+#articletext {width: 800px !important;}
+.articletextgutter {width: 800px !important;}
+*/
+
+.bofbox {border: 1px solid #000; color: #000;}
+.bofbox a:link,
+.bofbox a:visited {text-decoration: none; color: #000 !important;}
+
+
+
+.pullquote {color: #666; width: 3in; border-top: 4px double #000; border-bottom: 4px double #000; float: right; padding: .5cm 0 0 0; margin: .5cm; font-family: Georgia, serif; font-size: 1.5em; font-style: italic;}
+
+.articletext {width: auto;}
+
+a:link,
+a:visited {text-decoration: none; font-weight: bold; color: black;}
+
+.articletextgutter a:link:after, 
+.articletextgutter a:visited:after { content:" (" attr(href) ") "; }
+
+.kicker {color: #666 !important; font-family: Georgia, serif;}
+
+.align-center-full {display: block; clear: both; margin-bottom: 1em;}
+.align-left {float: left; margin: 0 1em 1em 0;}
+.align-right {float: right !important;  clear: left; margin: 0 0 1em 1em;}
+
+.photo {border: 1px solid #333; -webkit-border-bottom-left-radius: 8px; -webkit-border-bottom-right-radius: 8px; -moz-border-radius-bottomleft: 8px; -moz-border-radius-bottomright: 8px;}
+.sidebar {border: 1px solid #333; -webkit-border-radius: 8px; -moz-border-radius: 8px; padding: 10px;}
+
+.image-caption {color: #333; padding: 8px !important; text-align: left; font-size: 12px !important;}
+.image-caption p {margin-bottom: 0; line-height: 1em;}
+.photo-credit {color: #333; display: block; padding: 3px 8px 0 8px; font-size: .8em; text-align: right !important; float: right;}
+
+table.greyBorder {clear: both; border: none;}
+table.greyBorder tr, table.greyBorder td {border: none;}

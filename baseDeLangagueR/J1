@@ -1,0 +1,19 @@
+http://forge.imag.fr/docman/?group_id=577#
+Plan du 1er jour: 
+    intro
+    istall R
+    utiliser R
+    RStudio
+    Objets R
+
+
+
+-> et <- : affectation
+runif(8) : 8 réels au hasard dans [0,1]
+
+afficher les package installer : library()
+importer un package : library(nomDyPackage)
+installer un package : install.packages("nomPackage") # besoin root
+dataSers : fichier binaire contient des données, 
+
+changer le dossier des package: export R LIBS=”/home/your username/R/lib

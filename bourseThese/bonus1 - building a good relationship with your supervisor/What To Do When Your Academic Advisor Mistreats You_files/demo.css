@@ -1,0 +1,109 @@
+@CHARSET "UTF-8";
+.widget_wpb_widget #navigation {
+	width:250px;
+}
+.widget_wpb_widget #content {
+	/*width:300px;*/
+}
+.widget_wpb_widget #navigation, .widget_wpb_widget #content {
+	float:left;
+	width:100%;
+	background:none;
+	position: relative;
+}
+.widget_wpb_widget .cat_content{
+	border:#f0f0f0 2px solid;
+	margin-bottom:30px;
+	cursor:pointer;
+	width:290px;
+}
+.widget_wpb_widget #border_content{
+	border-bottom:#f0f0f0 2px solid;
+	padding:5px 10px;
+}
+.widget_wpb_widget .collapsible, .page_collapsible {
+	margin: 0;
+	padding:10px;
+	
+	border-top:#f0f0f0 2px solid;
+	background: #fff;
+	color: #000;
+    font-family: myriad pro;
+    font-size: 25px;
+font-weight:normal;
+	
+}
+.widget_wpb_widget .collapse-open {
+	background:#f01616;
+	color: #fff;
+}
+.widget_wpb_widget .collapse-open span {
+	display:block;
+	float:right;
+	padding:10px;
+}
+.widget_wpb_widget .collapse-open span {
+	background:url(../images/minus.png) center center no-repeat;
+}
+.widget_wpb_widget .collapse-close span {
+	display:block;
+	float:right;
+	background:url(../images/plus.png) center center no-repeat;
+	padding:10px;
+}
+.widget_wpb_widget div.container {
+	padding:0px;
+	margin:0;	
+	overflow-y: auto;
+	/*height: 344px;*/
+	max-width:394px;
+	width: 100%;
+	max-height:270px !important;
+}
+.widget_wpb_widget  div.content {
+	max-width:366px;
+	width:100%;
+	/*background:#f0f0f0;
+	margin: 0;
+	padding:10px;
+	font-size:.9em;
+	line-height:1.5em;
+	font-family:"Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;*/
+}
+.widget_wpb_widget div.content ul, .widget_wpb_widget div.content p {
+	padding: 3px 0px;
+	margin: 0px 2% !important;
+	width: 90%;
+	color: #000;
+}
+.widget_wpb_widget div.content ul li {
+	list-style-position:inside;
+	line-height:25px;
+	list-style:none;
+	margin:0px; padding:0px;
+}
+.widget_wpb_widget div.content ul li a {
+	color:#555555;
+}
+.widget_wpb_widget code {
+	overflow:auto;
+}
+div.all_time {
+	background: none repeat scroll 0 0 #f01616;
+	color: #FFFFFF;
+	display: block;
+	font: 26px myriad pro;
+	padding: 8px 9px 15px;
+	position: relative;
+	height:21px;
+}
+a.close_all {
+	padding:0px 0px 0px 10px;
+}
+
+.widget_wpb_widget{ margin-bottom:50px;}
+.widget_mostreadwidget{ float:left;}
+img.most_read_preview {margin-right: 5px; float:left;}
+
+.widget_wpb_widget li{list-style:none;}
+.widget_mostreadwidget h1.widget-title{font:26px myriad pro !important;}

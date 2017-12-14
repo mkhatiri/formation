@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Cxense - WSJ Candy Bar </title>
+    <style type="text/css">
+        .template {display: none;}
+        html, body {margin:0;padding: 0;font-family: Arial, Helvetica, sans-serif;font-weight: normal;font-size: 13px; color: #ffffff;}
+        a, a:hover, a:visited, a:active { text-decoration: none;}
+        .footer {background-color:#000;width:100%;bottom:0;position:fixed;}
+        .footer-container { margin:0 auto;width:360px;cursor:pointer;}
+        .collapsed { height:50px; position:absolute;z-index:1}
+        .expanded{position:absolute;z-index:2}
+        img {border:none}
+
+        @media all and (min-width: 1260px) {
+            .four, .eight, .twelve  {display:none}
+            .footer-container {width:1260px;}
+        }
+
+        @media all and (max-width: 1259px) and (min-width:995px) {
+            .four, .eight, .sixteen {display:none}
+            .footer-container{width:955px;}
+        }
+
+        @media all and (max-width: 994px) and (min-width: 636px) {
+            .four, .twelve, .sixteen {display:none}
+            .footer-container {width:635px;}
+        }
+
+        @media all and  (max-width: 635px) and (min-width: 360px) {
+            .eight, .twelve, .sixteen {display:none;}
+            .footer-container{width:360px;}
+        }
+
+        @media all and  (max-width: 359px) {
+            .eight, .twelve, .sixteen {display: none;}
+            .footer-container {width: 100%;}
+            img {width: 100%;}
+        }
+    </style>
+
+    <script src="wsj-scrim_data/jquery.js"></script>
+    <script src="wsj-scrim_data/cx.js"></script>
+    <script> var renderingTemplate = true; </script>
+    <script src="wsj-scrim_data/cxense-candy.js"></script>
+</head>
+
+<body xmlns:tmp="javascript:">
+
+<div style="background-color: rgb(0, 0, 0); display: block; height: 50px;" class="footer">
+    <div id="targetElement" class="footer-container">
+    <a href="http://adserver.cxad.cxense.com/adserver/click/lloXoq383O5_tGZww3gqtmn9dl48AL2OS_yvFauznaFefbop8a9kbCYWkhYK_FHIyvcJM4K7JTFfTKAxmqF5M-7oohQBjhGKN2ha3AKsIWipPXz0o23rr4kI3Y7k31Kc4HXbokSg0RQLhZlfbz0pDpMuTAl9dP4DrPImfZ0H8JNvXSMmf8mHqrVAGIQ." id="cxad_000000016198cf67" target="_blank">
+        <div class="four">
+            <div style="display: none;" class="expanded"> <img src="wsj-candybar_data/347bd0d843a6636309785aacb1babf234ef1b3b3d9d3f94dec83bada8c0f.jpg" height="150" width="360"></div>
+            <div class="collapsed"><img src="wsj-candybar_data/d7e4cf7207a2ec10015316ae2e3e67be138685d523f5df88661b7a248952.jpg" height="50" width="360"></div>
+        </div>
+        <div class="eight">
+            <div style="display: none;" class="expanded"> <img src="wsj-candybar_data/7e95853544bbb12137c43538e54e1ff7f1e0c93f8eb21a410f91ce601a27.jpg" height="150" width="635"></div>
+            <div class="collapsed"><img src="wsj-candybar_data/40556a53d517306e5814f9c7ab3c53c4ce32966a0a520db544129b60331a.jpg" height="50" width="635"></div>
+        </div>
+        <div class="twelve">
+            <div style="display: none;" class="expanded"> <img src="wsj-candybar_data/8347b4bf838d0612d01e8f29f8fd91242ba1546db203b6dd91fde7e8ba18.jpg" height="150" width="955"></div>
+            <div class="collapsed"><img src="wsj-candybar_data/0fdac7574137a6f6e49d078d5b2640250538de161cbb2eccc6e635b7b88f.jpg" height="50" width="955"></div>
+        </div>
+        <div class="sixteen">
+            <div style="display: none;" class="expanded"> <img src="wsj-candybar_data/c87fcb09ef48d204501552866538171260694cb0bb25cc93a0fa0e4f9d14.jpg" height="150" width="1260"></div>
+            <div class="collapsed"><img src="wsj-candybar_data/12cbd8bdb42ec56709bd80394a4714e4c22db5e1cf221cba52fb6209dc9e.jpg" height="50" width="1260"></div>
+        </div>
+    </a>
+ </div>
+</div>
+
+<div id="adOnlyCandyTemplate" class="template">
+    <!--%
+    var ad = data;
+    %-->
+    <a tmp:href="{{ad.clickUrl}}" target="_blank" tmp:id="{{'cxad_' + ad.id}}">
+        <div tmp:class="four">
+            <div tmp:class="expanded"> <img tmp:src="{{cxad.getImage(ad, '360 expanded')}}" height="150" width="360"></div>
+            <div tmp:class="collapsed"><img tmp:src="{{cxad.getImage(ad, '360 default')}}" height="50" width="360"></div>
+        </div>
+        <div tmp:class="eight">
+            <div tmp:class="expanded"> <img tmp:src="{{cxad.getImage(ad, '635 expanded')}}" height="150" width="635"></div>
+            <div tmp:class="collapsed"><img tmp:src="{{cxad.getImage(ad, '635 default')}}" height="50" width="635"></div>
+        </div>
+        <div tmp:class="twelve">
+            <div tmp:class="expanded"> <img tmp:src="{{cxad.getImage(ad, '955 expanded')}}" height="150" width="955"></div>
+            <div tmp:class="collapsed"><img tmp:src="{{cxad.getImage(ad, '955 default')}}" height="50" width="955"></div>
+        </div>
+        <div tmp:class="sixteen">
+            <div tmp:class="expanded"> <img tmp:src="{{cxad.getImage(ad, '1260 expanded')}}" height="150" width="1260"></div>
+            <div tmp:class="collapsed"><img tmp:src="{{cxad.getImage(ad, '1260 default')}}" height="50" width="1260"></div>
+        </div>
+    </a>
+</div>
+
+<script type="text/javascript">
+
+    function onGotAdData(data) {
+
+        var ad = cxad.getAd(data);
+
+        if (ad != null) {
+            var bgColor = cxad.getContent(ad, 'Background Color', '#000000');
+
+            $('.footer').css({'background-color': bgColor});
+
+            cX.library.renderTemplate('adOnlyCandyTemplate', 'targetElement', ad);
+
+            $('.footer').css({display : 'block', height: 150 });
+
+            $('.footer').delay(5000).animate({
+                height: 50
+            }, 500, function() {
+                $('.expanded').fadeOut(150);
+                cX.postMessageToParent('method=cxCandyResize&contentHeight=50' + typeAttribute, '*');
+                cX.postMessageToParent('method=cxCandyShow&contentHeight=50' + typeAttribute, '*');
+            });
+            cX.postMessageToParent('method=cxCandyResize&contentWidth=100%25&contentHeight=150' + typeAttribute, '*');
+            cX.postMessageToParent('method=cxCandyShow&contentWidth=100%25&contentHeight=150' + typeAttribute, '*');
+        }
+    }
+
+    function getArticleAdSpaceId() {
+        var spaces = {};
+
+        if (host.indexOf('barrons.com') > -1) {
+            spaces = {
+                'naus': '000000016257655f',
+                'asia': '0000000162576569'
+            };
+        } else if ((host.indexOf('graphics.wsj.com') > -1) || (host.indexOf('graphicsdev.dowjones.net') > -1)) {
+            spaces = {
+                'naus': '0000000162992549'
+            };
+        } else {
+            spaces = {
+                "naus": "000000016112644a",
+                "europe": "00000001611264ac",
+                "europetr": "00000001611265a0",
+                "asia": "0000000161126484",
+                "asiaindia": "00000001611264ea",
+                "asiakr": "0000000161126596",
+                "asiajp": "000000016112657f",
+                "asiaindo": "000000016112653e",
+                "asiacn": "000000016112649b",
+                "europeuk": "000000016154406d",
+                "nabr": "0000000161126493"
+            };
+        }
+
+        if (spaces[meta.edition]) {
+            return spaces[meta.edition];
+        } else {
+            return spaces.naus;
+        }
+    }
+
+    function getHomePageAdSpaceId() {
+        var spaces = {};
+
+        if (host.indexOf('barrons.com') > -1) {
+            spaces = {
+                'naus' : '000000016257655a',
+                'asia' : '000000016257656e'
+            };
+        } else {
+            spaces = {
+                "naus": "000000016154aed2",
+                "europe": "000000016154af6f",
+                "europetr": "000000016154afdd",
+                "asia": "000000016154af37",
+                "asiaindia": "000000016154af8c",
+                "asiakr": "000000016154afbf",
+                "asiajp": "000000016154afb7",
+                "asiaindo": "000000016154af9d",
+                "asiacn": "000000016154af5c",
+                "europeuk": "000000016154afee",
+                "nabr": "000000016154af40"
+            };
+        }
+
+        if (spaces[meta.edition]) {
+            return spaces[meta.edition];
+        } else {
+            return spaces.naus;
+        }
+    }
+    var args = cX.library.parseHashArgs();
+    var meta = cxad.getMeta();
+    var host = cxad.getHost(meta);
+    var isHP = meta.isHP != 'n';
+
+    var typeAttribute = (meta.template == 'full') ? '' : '&type=hp';
+    cxad.isRetina = meta.retina === 'y';
+
+    var kTarget = cxad.buildKTarget(meta);
+
+    var adSpaceId = isHP ? getHomePageAdSpaceId() : getArticleAdSpaceId();
+
+    var rb = {
+        adSpaceId: adSpaceId,
+        renderFunction: onGotAdData,
+        adUnitWidth: 1260,
+        adUnitHeight: 150,
+        initialHorizontalAdUnits: 1,
+        initialVerticalAdUnits: 1,
+        k: kTarget
+    };
+
+    if(args.ctx) {
+        rb.ctx = args.ctx;
+    }
+
+    cX.insertAdSpace(rb);
+</script>
+
+</body></html>

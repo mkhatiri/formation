@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Cxense - WSJ Scrim Offer</title>
+    <style type="text/css">
+        html{background-color: transparent}
+        body {margin:0; padding:0;background-color: transparent}
+        #cx-scrim-overlay{width:100%; height:100%; position:absolute;}
+        #cx-scrim{position:fixed;top:50%; left:50%;margin-left:-310px; margin-top:-232px;width:620px; height:432px;opacity:1;background:transparent}
+        #cx-scrim .close-btn{position:relative;background:transparent; cursor: pointer; width:32px; height:32px;left: 603px;top: 15px;}
+        .cx-scrim-creative, .cx-scrim-creative img{width:620px; height:400px;clear:right}
+        .cx-scrim-creative .four{display:none}
+
+        @media all and (max-width: 635px) and (min-width:120px) {
+            .cx-scrim-creative .eight{display:none}
+            .cx-scrim-creative .four{display:block}
+            #cx-scrim{position:fixed;top:50%; left:50%;;width:300px; height:282px; margin-left: -150px;margin-top: -160px;}
+            .cx-scrim-creative, .cx-scrim-creative img{width:300px;height:250px;}
+            #cx-scrim .close-btn{left: 268px;top: -4px;}
+        }
+
+        .template {display: none;}
+    </style>
+
+    <script src="wsj-scrim_data/jquery.js"></script>
+    <script src="wsj-scrim_data/cx.js"></script>
+    <script> var renderingTemplate = true; </script>
+    <script src="wsj-scrim_data/cxense-candy.js"></script>
+</head>
+
+<body xmlns:tmp="javascript:">
+
+<script type="text/javascript">
+
+    function onGotScrim(data) {
+        var ad = cxad.getAd(data);
+
+        if (ad) {
+
+            cX.library.renderTemplate('adsTemplate', 'targetElement', ad);
+
+            var defaultBackground = '(0,0,0,0.8)';
+
+            var backgroundColor = cxad.getContent(ad, 'Background Color', defaultBackground);
+
+            if (!cxad.validateRGBAColor(backgroundColor)) {
+                backgroundColor = defaultBackground;
+            }
+
+            $('#cx-scrim-overlay').css({'background': "rgba" + backgroundColor});
+
+            cX.setSiteId('9222334397379502889');
+            meta.adCreative = ad.creative.id;
+            cX.setCustomParameters(meta);
+
+            var muteTag = cxad.getContent(ad, 'Mute Tag', null);
+            if (muteTag) {
+                cX.setUserProfileParameters({"muteTag" : muteTag});
+            }
+
+            cX.sendPageViewEvent({ 'location': 'http://scrim.wsj.com' });
+
+            $( ".close-btn" ).click(function(event){
+                $('#cx-scrim-overlay').fadeOut();
+                cX.postMessageToParent('method=cxUserAction&type=wsjscrimclose', '*');
+                cX.postMessageToParent('method=cxCandyHide&type=scrim', '*');
+                return false;
+            });
+
+            $( "#cx-scrim-overlay" ).click(function(event){
+                $('#cx-scrim-overlay').fadeOut();
+                cX.postMessageToParent('method=cxUserAction&type=wsjscrimsdismiss', '*');
+                cX.postMessageToParent('method=cxCandyHide&type=scrim', '*');
+            });
+        //} else {
+        //    cX.postMessageToParent('method=cxShowAllOffers', '*');
+
+
+            if (isScrollableScrim) {
+                //cX.postMessageToParent('method=cxUserAction&type=scrollscrim', '*');
+                cX.postMessageToParent('method=cxCandyShowOnScroll&type=scrim', '*');
+            } else {
+                cX.postMessageToParent('method=cxCandyResize&contentHeight=100%25&contentWidth=100%25&type=scrim', '*');
+                cX.postMessageToParent('method=cxCandyShow&contentHeight=100%25&contentWidth=100%25&type=scrim', '*');
+            }
+        }
+    }
+
+</script>
+
+<div id="targetElement">
+    <div style="background: rgba(0, 0, 0, 0.8) none repeat scroll 0% 0%; display: none;" id="cx-scrim-overlay">
+        <div id="cx-scrim">
+            <div class="close-btn">
+                <img src="wsj-scrim_data/icon-close2x.png" title="Close" height="32px" width="32px">
+            </div>
+            <div class="cx-scrim-creative">
+                <a id="cXLinkIdiocjlcw2mq90rhsv" href="https://buy.wsj.com/apremea?inttrackingCode=aaqmzpbh&amp;icid=WSJ_ON_ALL_ACQ_NA&amp;cx_campaign=snippet&amp;cx_adcreative=%7Bcreative%7D&amp;cx_ad=%7Bad%7D&amp;cx_adcampaign=%7Bcampaign%7D&amp;cx_adspace=%7Badspace%7D" target="_blank">
+                    <div class="eight"><img src="wsj-scrim_data/7a7e66cbf02d58ec00b6c9620a1550536c0d43ce379227b90d20573830f0.jpg" title="" alt=""></div>
+                    <div class="four"><img src="wsj-scrim_data/5e437e5cb6951ec165f4ece9084ff37cf2c6e6ba422d82bdf3dc3ae2363b.jpg" title="" alt=""></div>
+                </a>
+            </div>
+        </div>
+    </div>
+ </div>
+
+<div id="adsTemplate" class="template">
+    <!--%
+    var ad = data;
+    var defaultCreative = cxad.getImage(ad, '620 default');
+    var smallCreative = cxad.getImage(ad, '300 default');
+    %-->
+    <div tmp:id="cx-scrim-overlay">
+        <div tmp:id="cx-scrim">
+            <div tmp:class="close-btn">
+                <img tmp:src="https://a248.e.akamai.net/f/248/67675/6h/s2.wsj.net/img/cxense/icon-close2x.png" title="Close" height="32px" width="32px">
+            </div>
+            <div tmp:class="cx-scrim-creative">
+                <a tmp:id="{{cX.clickTracker(ad.clickUrl)}}" tmp:href="{{ad.creative.destinationUrl}}" tmp:target="_blank">
+                    <div class="eight"><img tmp:src="{{defaultCreative}}" tmp:title="" tmp:alt=""></div>
+                    <div class="four"><img tmp:src="{{smallCreative}}" tmp:title="" tmp:alt=""></div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    function getAdSpaceId(host, isHP) {
+        var spaces = {};
+
+        if ((host.indexOf('graphics.wsj.com') > -1) || (host.indexOf('graphicsdev.dowjones.net') > -1)){
+            spaces = {
+                'naus': '0000000162a32831'
+            };
+        } else if (host.indexOf('barrons.com') > -1) {
+            spaces = {
+                'naus': '0000000162576564',
+                'asia': '0000000162576573'
+            };
+        }else if (host.indexOf('wsjplus.com') > -1) {
+            spaces = {
+                'naus': '000000016247d60f'
+            };
+        } else {
+            spaces = {
+                'naus': isHP? '000000016232ba4f' : '0000000162c114dd',
+                "europe": "00000001627e705a",
+                "europetr": "00000001627e70ec",
+                "asia": "00000001627e7082",
+                "asiaindia": "00000001627e70b9",
+                "asiakr": "00000001627e70e5",
+                "asiajp": "00000001627e70dd",
+                "asiaindo": "00000001627e70d5",
+                "asiacn": "00000001627e70af",
+                "europeuk": "00000001627e70f3",
+                "nabr": "00000001627e7093"
+            };
+        }
+
+        if (spaces[meta.edition]) {
+            return spaces[meta.edition];
+        } else {
+            return spaces.naus;
+        }
+    }
+
+    var args = cX.library.parseHashArgs();
+    var meta = cxad.getMeta();
+    var host = cxad.getHost(meta);
+    var isHP = meta.isHP != 'n';
+    var adSpaceId = getAdSpaceId(host, isHP);
+    cxad.isRetina = meta.retina === 'y';
+    var kTarget = cxad.buildKTarget(meta);
+
+    //Scrollable Scrim is not required until May 2016
+    //var isScrollableScrim = meta.scrollableScrim || (meta.bucket == 1);
+    var isScrollableScrim = meta.scrollableScrim;
+
+    var rb = {
+        adSpaceId: adSpaceId,
+        siteId : '9222318613852486900',
+        renderFunction: onGotScrim,
+        adUnitWidth: 620,
+        adUnitHeight: 400,
+        initialHorizontalAdUnits: 1,
+        initialVerticalAdUnits: 1,
+        k: kTarget
+    };
+
+    if(args.ctx) {
+        rb.ctx = args.ctx;
+    }
+
+    cX.insertAdSpace(rb);
+</script>
+
+<iframe style="display: none;" src="wsj-scrim_data/p1.htm" scrolling="no" name="cx_rep_iframe_0.9062734818593065" id="cx_rep_iframe_0.9062734818593065" frameborder="0" height="1" width="1"></iframe></body></html>
